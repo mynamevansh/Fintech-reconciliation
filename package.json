@@ -1,0 +1,11 @@
+{
+  "name": "fintech-reconciliation",
+  "version": "1.0.0",
+  "description": "Reconciliation system to detect mismatches between transactions and settlements",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Vansh Ranawat",
+  "license": "ISC"
+}
