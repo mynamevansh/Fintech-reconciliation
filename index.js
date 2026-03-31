@@ -81,6 +81,26 @@ printResult("3 – Duplicate Settlement Entry",                   testDuplicateS
 printResult("4 – Rounding Mismatch (3dp vs 2dp)",              testRoundingMismatch());
 printResult("5 – Refund Without Original Transaction",          testRefundWithoutOriginal());
 printResult("6 – Combined Full Dataset (all edge cases)",       testFullDataset());
+
 console.log("\n" + "═".repeat(70));
 console.log("  All tests complete.");
 console.log("═".repeat(70) + "\n");
+
+// ─── HTTP Server to keep application alive on Render ─────────────────────────
+const http = require("http");
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({
+    status: "Reconciliation Engine is running securely!",
+    health: "OK",
+    latestResult: testFullDataset()
+  }, null, 2));
+});
+
+server.listen(PORT, () => {
+  console.log(`Server is successfully listening on port ${PORT}`);
+  console.log(`Ready for Render deployment!`);
+});
+
